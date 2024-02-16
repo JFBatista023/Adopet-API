@@ -1,0 +1,23 @@
+package br.com.alura.commands;
+
+import java.io.IOException;
+
+import br.com.alura.client.ClientHttpConfiguration;
+import br.com.alura.interfaces.Command;
+import br.com.alura.service.AbrigoService;
+
+public class CadastrarAbrigoCommand implements Command {
+
+    @Override
+    public void execute() {
+        ClientHttpConfiguration client = new ClientHttpConfiguration();
+        AbrigoService abrigoService = new AbrigoService(client);
+
+        try {
+            abrigoService.cadastrarAbrigo();
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+}
